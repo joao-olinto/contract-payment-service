@@ -77,5 +77,11 @@ public class Contract {
 
 		this.totalValue = totalValue;
 	}
+	
+	
+	//Metodo responsavel por adicionar as parcelas ao contrato
+	public void addInstallment(Installment installment) {
+		installments.add(installment);
+	}
 
 }
