@@ -15,10 +15,10 @@ public class Contract {
 	private List<Installment> installments = new ArrayList<>();
 
 	// Construtor
-	public Contract(String number, LocalDate date, Installment installment) {
+	public Contract(String number, LocalDate date, double totalValue) {
 
 		// Aplicando terminadas regras de negocio
-		// O numero do pedido deve conter somente digitos numericos(4 digitos
+		// O numero do pedid0o deve conter somente digitos numericos(4 digitos
 		// especificamente)
 		if (!number.trim().matches("^[\\d{4}$")) {
 			throw new DomainException("Domain error: The contract number can only contain 4 numeric digits.");
@@ -36,6 +36,7 @@ public class Contract {
 		}
 		this.number = number;
 		this.date = date;
+		this.totalValue = totalValue;
 	}
 
 	// getters e setters
