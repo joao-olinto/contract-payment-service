@@ -1,6 +1,7 @@
 package domain.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import domain.entities.Contract;
 import domain.entities.Installment;
@@ -33,6 +34,12 @@ public class ContractService {
 			//Instancia e adiciona a lista de parcelas
 			contract.addInstallment(new Installment(dueDate,installmentValue));
 		}
+	}
+	
+	public List<Installment> getInstallments(Contract contract){
+		
+		List<Installment> installments = contract.getInstallments();
+		return installments;
 	}
 
 

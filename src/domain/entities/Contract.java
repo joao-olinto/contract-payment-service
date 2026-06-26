@@ -79,10 +79,17 @@ public class Contract {
 		this.totalValue = totalValue;
 	}
 	
+	//Metodo que retorna uma copia superficial das parcelas de um contrato
+	public List<Installment> getInstallments(){
+		return List.copyOf(installments);
+	}
+	
 	
 	//Metodo responsavel por adicionar as parcelas ao contrato
 	public void addInstallment(Installment installment) {
 		installments.add(installment);
 	}
+	
+	
 
 }
