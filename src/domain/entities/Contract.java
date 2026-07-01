@@ -1,8 +1,7 @@
 package domain.entities;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import domain.exception.DomainException;
 
@@ -12,8 +11,6 @@ public class Contract {
 	private String number;
 	private LocalDate date;
 	private double totalValue;
-	private List<Installment> installments = new ArrayList<>();
-
 	// Construtor
 	public Contract(String number, LocalDate date, double totalValue) {
 
@@ -79,17 +76,9 @@ public class Contract {
 		this.totalValue = totalValue;
 	}
 	
-	//Metodo que retorna uma copia superficial das parcelas de um contrato
-	public List<Installment> getInstallments(){
-		return List.copyOf(installments);
-	}
 	
 	
-	//Metodo responsavel por adicionar as parcelas ao contrato
-	public void addInstallment(Installment installment) {
-		installments.add(installment);
-	}
-	
+
 	
 
 }

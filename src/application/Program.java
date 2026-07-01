@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import domain.entities.Contract;
+import domain.entities.Installment;
 import domain.service.ContractService;
 import domain.service.PayPalService;
 
@@ -38,7 +39,14 @@ public class Program {
 		 * funÇão criar as parcelas do contrato
 		 */
 		service.processContract(contract, numberInstallment);
+		
+	
+		showResult(contract);
 
+	}
+	
+	public static void showResult(ContractService service) {
+	
 	}
 
 }
