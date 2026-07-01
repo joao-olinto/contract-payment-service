@@ -37,11 +37,13 @@ public class ContractService {
 		}
 	}
 
+	//Adiciona a a parcela a lista de parecelas
 	public void addInstallment(Installment installment) {
 		installments.add(installment);
 	}
 
-	public List<Installment> getInstallments(Contract contract) {
+	//retorna uma copia supercial da lista de parcelas
+	public List<Installment> getInstallments() {
 
 		return List.copyOf(installments);
 	}

@@ -1,5 +1,7 @@
 package application;
 
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -41,12 +43,23 @@ public class Program {
 		service.processContract(contract, numberInstallment);
 		
 	
-		showResult(contract);
+		//mostra o resultado...
+		showResult(service);
 
 	}
 	
+	//Mostra a saida desejada
+	//Mostra a data com o valor das parcelas.
 	public static void showResult(ContractService service) {
-	
+		
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
+		System.out.println("Parcelas: ");
+		List<Installment> installments = service.getInstallments();
+		
+		for(Installment i: installments) {
+			System.out.println(fmt.format(i.getDueDate()) + String.format("- %.2f", i.getAmount()));
+		}
 	}
 
 }
