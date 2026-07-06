@@ -15,10 +15,12 @@ public class ReaderAndCreateContract {
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		//Leitura dos dados
-		System.out.print("Entre os dados do contrato: ");
+		System.out.println("Entre os dados do contrato: ");
+		System.out.print("Numero: ");
 		String number = sc.next();
 		System.out.print("Data (dd/MM/yyyy): ");
 		
+		sc.nextLine();
 		//passamos uma string para LocalDate utilizando o formatador
 		LocalDate dateContract = LocalDate.parse(sc.nextLine(), fmt);
 		System.out.print("Valor do contrato: ");

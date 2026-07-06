@@ -44,21 +44,21 @@ public class Program {
 		
 	
 		//mostra o resultado...
-		showResult(service);
+		showResult(contract);
 
 	}
 	
 	//Mostra a saida desejada
 	//Mostra a data com o valor das parcelas.
-	public static void showResult(ContractService service) {
+	public static void showResult(Contract contract) {
 		
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		System.out.println("Parcelas: ");
-		List<Installment> installments = service.getInstallments();
+		List<Installment> installments = contract.getInstallments();
 		
 		for(Installment i: installments) {
-			System.out.println(fmt.format(i.getDueDate()) + String.format("- %.2f", i.getAmount()));
+			System.out.println(fmt.format(i.getDueDate()) + String.format(" - %.2f", i.getAmount()));
 		}
 	}
 

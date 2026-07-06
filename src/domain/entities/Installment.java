@@ -13,7 +13,7 @@ public class Installment {
 	public Installment(LocalDate dueDate, double amount) {
 
 		if (amount < 0.0) {
-			throw new DomainException("Domain error: ");
+			throw new DomainException("Domain error: The installment amount cannot be negative.");
 		}
 
 		this.dueDate = dueDate;
