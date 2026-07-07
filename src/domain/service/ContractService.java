@@ -1,17 +1,12 @@
 package domain.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import domain.entities.Contract;
 import domain.entities.Installment;
 
 public class ContractService {
 
 	private OnlinePaymentService onlinePay;
-
-	List<Installment> installments = new ArrayList<>();
 
 	public ContractService(OnlinePaymentService onlinePay) {
 		this.onlinePay = onlinePay;
@@ -20,32 +15,21 @@ public class ContractService {
 	// Metodo para processar o contrato, gerando as parcelas do mesmo
 	public void processContract(Contract contract, int months) {
 
-		// Variavel que representa o valor da parcela base
-		double installmentValue = 0.0;
 		for (int i = 0; i < months; i++) {
 
 			// Dividimos o valor pela quantidade de parcelas/meses
-			installmentValue = contract.getTotalValue() / months;
+			double installmentValue = contract.getTotalValue() / months;
 			// chamada ao metodo responsavel por calcular o juros simples
 			installmentValue += onlinePay.interest(installmentValue, i + 1);
 			// Adiciona a taxa de 2%
 			installmentValue += onlinePay.paymentFee(installmentValue);
 			// adiciona a quantidade de mes com base no valor de i
 			LocalDate dueDate = contract.getDate().plusMonths(i + 1);
+
 			// Instancia e adiciona a lista de parcelas
-			addInstallment(new Installment(dueDate, installmentValue));
+			contract.addInstallment(new Installment(dueDate, installmentValue));
 		}
-	}
 
-	//Adiciona a a parcela a lista de parecelas
-	public void addInstallment(Installment installment) {
-		installments.add(installment);
-	}
-
-	//retorna uma copia supercial da lista de parcelas
-	public List<Installment> getInstallments() {
-
-		return List.copyOf(installments);
 	}
 
 }
